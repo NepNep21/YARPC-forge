@@ -61,7 +61,7 @@ public class Config {
                 .comment("Format for the state line, use %s as a placeholder, up to 2 placeholders are allowed")
                 .define("stateFormat", "%s | %s");
         DETAILS_FORMAT = builder
-                .comment("Format for the state line, use %s as a placeholder, up to 2 placeholders are allowed")
+                .comment("Format for the details line, use %s as a placeholder, up to 2 placeholders are allowed")
                 .define("detailsFormat", "%s | %s");
         APP_ID = builder
                 .comment("Application id from discord for using custom assets, see https://discord.com/developers/applications/")
