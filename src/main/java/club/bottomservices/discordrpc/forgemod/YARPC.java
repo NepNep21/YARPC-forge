@@ -141,8 +141,8 @@ public class YARPC {
                 switch ((String) arg) {
                     case "DIMENSION" -> text = text.replaceFirst(placeholder, dimensionPath);
                     case "USERNAME" -> text = text.replaceFirst(placeholder, minecraft.getUser().getName());
-                    case "HEALTH" -> text = text.replaceFirst(placeholder, "Health " + (player != null ? String.valueOf(player.getHealth()) : "0.0"));
-                    case "HUNGER" -> text = text.replaceFirst(placeholder, "Food " + (player != null ? String.valueOf(player.getFoodData().getFoodLevel()) : "0"));
+                    case "HEALTH" -> text = text.replaceFirst(placeholder, "Health " + (player != null ? player.getHealth() : "0.0"));
+                    case "HUNGER" -> text = text.replaceFirst(placeholder, "Food " + (player != null ? player.getFoodData().getFoodLevel() : "0"));
                     case "SERVER" -> {
                         ServerData currentServer = minecraft.getCurrentServer();
                         if (currentServer != null) {
