@@ -61,6 +61,8 @@ public class YARPC {
         }
         shouldWork = true;
         client = new DiscordRPCClient(new EventListener() {
+            // Log4j adds a shutdown hook that stops the logging system, since the discord connection is also closed in a shutdown
+            // hook and the run order isn't guaranteed, logging the connection closing is pointless
             @Override
             public void onReady(@Nonnull DiscordRPCClient client, @Nonnull User user) {
                 logger.info("DiscordRPC ready");
@@ -74,11 +76,6 @@ public class YARPC {
                 } else if (event != null) {
                     logger.error("DiscordRPC error with ErrorEvent code {} and message {}", event.code, event.message);
                 }
-            }
-
-            @Override
-            public void onClose(@Nonnull DiscordRPCClient client) {
-                logger.info("Closing DiscordRPC client");
             }
         }, Config.APP_ID.get());
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
