@@ -82,7 +82,7 @@ dependencies {
     // that the dep is a ForgeGradle 'patcher' dependency, and its patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft 'net.minecraftforge:forge:1.19.2-43.0.7'
-    embed('com.github.NepNep21:DiscordRPC4j16:254cf165ca6ed9bca78af073a5dd8ee745781876') {
+    embed('com.github.NepNep21:DiscordRPC4j16:v1.2.1') {
         exclude group: 'com.google.code.findbugs'
         exclude group: 'org.slf4j'
         exclude group: 'com.google.code.gson'
