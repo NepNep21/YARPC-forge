@@ -135,26 +135,30 @@ public class YARPC {
             var player = minecraft.player;
             for (var arg : Config.FORMAT_ARGS.get()) {
                 // Not redundant
-                switch ((String) arg) {
+                switch (arg) {
                     case "DIMENSION" -> text = text.replaceFirst(placeholder, dimensionPath);
                     case "USERNAME" -> text = text.replaceFirst(placeholder, minecraft.getUser().getName());
                     case "HEALTH" -> text = text.replaceFirst(placeholder, "Health " + (player != null ? player.getHealth() : "0.0"));
                     case "HUNGER" -> text = text.replaceFirst(placeholder, "Food " + (player != null ? player.getFoodData().getFoodLevel() : "0"));
-                    case "SERVER" -> {
-                        ServerData currentServer = minecraft.getCurrentServer();
-                        if (currentServer != null) {
-                            text = text.replaceFirst(placeholder, currentServer.ip);
-                        } else if (minecraft.isLocalServer()) {
-                            text = text.replaceFirst(placeholder, "Singleplayer");
-                        } else {
-                            text = text.replaceFirst(placeholder, "Main Menu");
-                        }
-                    }
+                    case "SERVER" -> text = text.replaceFirst(placeholder, getServer(true));
                     case "HELD_ITEM" -> text = text.replaceFirst(placeholder, "Holding " + (player != null ? player.getMainHandItem().getHoverName().getString() : "Air"));
+                    case "SERVER_NAME" -> text = text.replaceFirst(placeholder, getServer(false));
                 }
             }
             String[] split = text.split("\n");
             builder.setText(split[0], split[1]);
+        }
+    }
+    
+    private String getServer(boolean address) {
+        Minecraft mc = Minecraft.getInstance();
+        ServerData currentServer = mc.getCurrentServer();
+        if (currentServer != null) {
+            return address ? currentServer.ip : currentServer.name;
+        } else if (mc.isLocalServer()) {
+            return "Singleplayer";
+        } else {
+            return "Main Menu";
         }
     }
 }

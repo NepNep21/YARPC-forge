@@ -37,7 +37,8 @@ public class Config {
             "HEALTH",
             "HUNGER",
             "SERVER",
-            "HELD_ITEM"
+            "HELD_ITEM",
+            "SERVER_NAME"
     );
 
     public static final ForgeConfigSpec CONFIG;
@@ -67,7 +68,7 @@ public class Config {
                 .comment("Application id from discord for using custom assets, see https://discord.com/developers/applications/")
                 .define("appId", "928401525842259979");
         FORMAT_ARGS = builder
-                .comment("List of format arguments (DIMENSION, USERNAME, HEALTH, HUNGER, SERVER, HELD_ITEM)")
+                .comment(String.format("List of format arguments %s", VALID_OPTIONS))
                 .defineList("formatArgs", List.of(
                         VALID_OPTIONS.get(1), VALID_OPTIONS.get(2), VALID_OPTIONS.get(3), VALID_OPTIONS.get(0)
                 ), object -> object instanceof String && VALID_OPTIONS.contains((String) object));

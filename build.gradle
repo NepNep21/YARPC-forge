@@ -14,7 +14,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'java'
 
-version = '1.2.0'
+version = '1.3.0'
 group = 'club.bottomservices.discordrpc.forgemod' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'yarpc'
 
@@ -82,7 +82,7 @@ dependencies {
     // that the dep is a ForgeGradle 'patcher' dependency, and its patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft 'net.minecraftforge:forge:1.20.4-49.0.38'
-    embed('com.github.NepNep21:DiscordRPC4j16:v1.2.1') {
+    embed('com.github.NepNep21:DiscordRPC4j16:1.2.2') {
         exclude group: 'com.google.code.findbugs'
         exclude group: 'org.slf4j'
         exclude group: 'com.google.code.gson'
